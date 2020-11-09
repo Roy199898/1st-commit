@@ -6,6 +6,8 @@ namespace Libraryapp
 {
     class Library
     {
+        private Book[] listofbook;
+
         private string libName;
 
         public string LibName
@@ -21,7 +23,8 @@ namespace Libraryapp
             get { return libAddress; }
             set { libAddress = value; }
         }
-        Book[] listofbook;
+
+
         int bookcount = 0;
 
         private int totalBook;
@@ -31,7 +34,7 @@ namespace Libraryapp
             get { return totalBook; }
             set { totalBook = value; }
         }
-        public void ShowInfo()
+        virtual public void ShowLibInfo()
         {
             Console.WriteLine("Library Name :" + libName);
             Console.WriteLine("Library Address:" + libAddress);
@@ -42,9 +45,53 @@ namespace Libraryapp
         {
             for (int i = 0; i < bookcount; i++)
             {
-                Console.WriteLine(i);
+                listofbook[i].ShowInfo();
             }
         }
+
+
+        public void AddNewBook(Book book)
+        {
+
+            listofbook[bookcount++] = book;
+
+        }
+        public Library(string libName, string libAddress, int totalBook)
+        {
+            this.libName = libName;
+            this.libAddress = libAddress;
+            this.totalBook = totalBook;
+            listofbook = new Book[50];
+        }
+        public Library()
+        {
+            listofbook = new Book[50];
+        }
+        public void AddNewBookCopy(Book book, int copy)
+        {
+
+            for (int i = 0; i < bookcount; i++)
+            {
+                if (book == listofbook[i])
+                {
+                    book.AddBookCopy(copy);
+                }
+            }
+        }
+        public void DeleteBook(Book book)
+        {
+
+            for (int i = 0; i <= bookcount; i++)
+            {
+                if (book == listofbook[i])
+                {
+
+                    listofbook[i] = null;
+                }
+                break;
+            }
+        }
+
 
     }
 }

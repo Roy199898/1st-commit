@@ -7,13 +7,26 @@ namespace Libraryapp
     {
         static void Main(string[] args)
         {
-            Book b = new Book("Roy", "Humayun ahmed", "6", "tel", 43);
+            Book b = new Book("Deyal", "Humayun Ahmed", "6", "Novel", 43);
             b.ShowInfo();
             b.AddBookCopy(2);
             b.ShowInfo();
             Console.WriteLine();
-            Library 22 = new Library("Ru", "Rangpur", "35");
-            22.ShowInfo();
+            Library l1 = new Library("Himu", "DHAKA", 1200);
+            l1.ShowLibInfo();
+            l1.AddNewBook(b);
+            Book c = new Book("Shuvro", "Humayun Ahmed", "4", "Novel", 34);
+            l1.AddNewBook(c);
+
+            l1.ShowAllBooks();
+            b.AddBookCopy(20);
+            b.ShowInfo();
+
+            Console.WriteLine();
+            l1.DeleteBook(b);
+            l1.ShowAllBooks();
         }
     }
 }
+       
+   
